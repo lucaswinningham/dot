@@ -17,6 +17,7 @@ Get the repo.
 $ cd
 $ git init
 $ git remote add origin git@github.com:lucaswinningham/dot.git
+$ git pull origin master
 $ source .bashrc
 $ git push --set-upstream origin master
 ```
