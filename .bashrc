@@ -9,7 +9,7 @@ safe_source() {
 # Profiles
 #
 
-for file in ~/.{local_profile,rvm/scripts/rvm}; do
+for file in ~/{.native/.profile,.rvm/scripts/rvm}; do
   safe_source "$file"
 done;
 unset file;
