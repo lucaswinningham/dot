@@ -3,17 +3,17 @@
   email = lucas.winningham@gmail.com
 [alias]
   a = add
-  ac = ! git add . && git commit -m
-  acp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
+  ac = ! git a . && git c
+  acp = "!f() { git a . && git c \"$@\" && git push; }; f"
   b = branch
   c = commit -m
   co = checkout
   cob = checkout -b
-  d = ! git --no-pager diff --color | sed -E 's/^([^-+ ]*)[-+ ]/\\1/'
-  m = merge
+  cp = "!f() { git c \"$@\" && git push; }; f"
+  d = ! git diff --color | sed -E 's/^([^-+ ]*)[-+ ]/\\1/'
+  m = merge --no-edit
   mm = "!f() { local branch=$(git_branch); git co master && git p && git co $branch && git m master; }; f"
   p = pull
   pushup = "!f() { git push --set-upstream origin $(git_branch); }; f"
-  r = reset
   st = status
   sync = remote prune origin

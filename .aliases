@@ -10,6 +10,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# git
+alias git='GIT_PAGER=cat git'
+
 # man
 alias man='MANPAGER=cat man'
 
