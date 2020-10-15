@@ -20,10 +20,10 @@
 !.prompt
 !.overrides
 
+!.tmux.conf
+
 !.iterm/
 !.iterm/**/*
-
-!.tmux.conf/
 
 !.gemrc
 
