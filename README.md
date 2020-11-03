@@ -52,7 +52,7 @@ iTerm2 > Preferences
 
    - Esc+: f
 
- - [The following hex codes were found using xxd command](https://stackoverflow.com/questions/36321230/finding-the-hex-code-sequence-for-a-key-combination)
+ - [The following hex codes were found using xxd command and are used for tmux](https://stackoverflow.com/questions/36321230/finding-the-hex-code-sequence-for-a-key-combination)
 
  - Profiles > Keys > Add
 
