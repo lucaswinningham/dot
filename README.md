@@ -52,6 +52,68 @@ iTerm2 > Preferences
 
    - Esc+: f
 
+ - [The following hex codes were found using xxd command](https://stackoverflow.com/questions/36321230/finding-the-hex-code-sequence-for-a-key-combination)
+
+ - Profiles > Keys > Add
+
+   - Keyboard Shortcut: OPTION + COMMAND + UP
+
+   - Action: Send Hex Code
+
+   - 0x1b 0x5b 0x31 0x3b 0x32 0x41
+
+     - maps to SHIFT + UP
+
+ - Profiles > Keys > Add
+
+   - Keyboard Shortcut: OPTION + COMMAND + DOWN
+
+   - Action: Send Hex Code
+
+   - 0x1b 0x5b 0x31 0x3b 0x32 0x42
+
+     - maps to SHIFT + DOWN
+
+ - Profiles > Keys > Add
+
+   - Keyboard Shortcut: OPTION + COMMAND + RIGHT
+
+   - Action: Send Hex Code
+
+   - 0x1b 0x5b 0x31 0x3b 0x32 0x43
+
+     - maps to SHIFT + RIGHT
+
+ - Profiles > Keys > Add
+
+   - Keyboard Shortcut: OPTION + COMMAND + LEFT
+
+   - Action: Send Hex Code
+
+   - 0x1b 0x5b 0x31 0x3b 0x32 0x44
+
+     - maps to SHIFT + LEFT
+
+ - Profiles > Keys > Add
+
+   - Keyboard Shortcut: COMMAND + RIGHT
+
+   - Action: Send Hex Code
+
+   - 0x1a 0x1b 0x5b 0x43
+
+     - maps to CTRL + Z + RIGHT
+
+ - Profiles > Keys > Add
+
+   - Keyboard Shortcut: COMMAND + LEFT
+
+   - Action: Send Hex Code
+
+   - 0x1a 0x1b 0x5b 0x44
+
+     - maps to CTRL + Z + LEFT
+
 [Install Visual Studio Code](https://code.visualstudio.com/download)
 
  - Install Settings Sync by Shan Khan

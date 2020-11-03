@@ -20,6 +20,8 @@
 !.prompt
 !.overrides
 
+!.tmux.conf
+
 !.iterm/
 !.iterm/**/*
 
