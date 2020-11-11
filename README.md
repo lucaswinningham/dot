@@ -227,21 +227,11 @@ $ cd && mkdir -p .native && cd .native && touch .profile
 
 this_dir="${BASH_SOURCE%/*}"
 
-shopt -s dotglob # Include dotfiles ".*"
-
 # Recursively iterates over directories looking for .sh files sourcing them if they exist
-for dir in "$this_dir"/**/*/; do
-  dir=$(echo "$dir" | sed 's/.$//') # Remove last character "/"
-
-  for executable in "$dir"/*.sh; do
-    [ -f "$executable" ] && source "$executable"
-  done
+for executable in $(find "$this_dir" -regex ".*\.sh"); do
+  [ -f "$executable" ] && source "$executable"
 done
 
-shopt -u dotglob
-
-unset executable
-unset dir
 unset this_dir
 
 ```
@@ -257,30 +247,33 @@ $ cd && cd .native && mkdir -p .tmux && touch .tmux/.restore.sh
 
 restore_tmux_work() {
   local session_name="work"
-  local default_window_name="repo"
 
   tmux has-session -t "$session_name" &> /dev/null
 
   if [ $? != 0 ]; then
     tmux new-session -s "$session_name" -d
     _rebuild_session
-    tmux select-window -t "$default_window_name"
+    tmux select-window -t repos
   fi
+
+  tmux attach -t "$session_name"
+
+  return 0
 }
 
 _rebuild_session() {
-  _rebuild_repo_window
-  _rebuild_serve_window
-  # _rebuild_test_window
-  # _rebuild_lint_window
-  # _rebuild_db_window
+  _rebuild_repos_window
+  _rebuild_servers_window
+  # _rebuild_testers_window
+  # _rebuild_linters_window
+  # _rebuild_dbs_window
   # _rebuild_irb_window
   # _rebuild_ssh_window
   # _rebuild_bg_window
 }
 
-_rebuild_repo_window() {
-  tmux rename-window repo
+_rebuild_repos_window() {
+  tmux rename-window repos
 
   _initialize_pane "~/code/api"
 
@@ -293,8 +286,8 @@ _rebuild_repo_window() {
   # tmux select-layout even-vertical
 }
 
-_rebuild_serve_window() {
-  tmux new-window -n serve
+_rebuild_servers_window() {
+  tmux new-window -n servers
 
   _initialize_pane "~/code/api"
   tmux send-keys "rails s" Enter
@@ -320,7 +313,7 @@ _source_profile() {
 
 _clear_screen() {
   tmux send-keys clear Enter
-  tnux clear-history # Not working
+  tmux clear-history # Not working
 }
 
 ```
