@@ -65,6 +65,10 @@ git_b() {
   done
 }
 
+git_cob() {
+  git checkout -b $1 && git_note "${@:2}"
+}
+
 git_mm() {
   local branch=$(git_branch)
   git co $(git_default_branch) && git p && git co "$branch" && git m $(git_default_branch)
@@ -74,7 +78,7 @@ git_note() {
   if [ $# -eq 0 ]; then
     git config branch."$(git_branch)".note
   else
-    git config --replace-all branch."$(git_branch)".note "$1"
+    git config --replace-all branch."$(git_branch)".note "$@"
   fi
 }
 
@@ -82,5 +86,6 @@ export -f git_color
 export -f git_branch
 export -f git_default_branch
 export -f git_b
+export -f git_cob
 export -f git_mm
 export -f git_note
