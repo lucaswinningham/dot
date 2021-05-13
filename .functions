@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 git_color() {
   local git_status="$(git status 2> /dev/null)"
 
@@ -31,5 +33,54 @@ git_branch() {
   fi
 }
 
+git_default_branch() {
+  git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+}
+
+git_b() {
+  local current=$(git rev-parse --abbrev-ref HEAD)
+  local branches=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
+  local longest_branch_name_size=0
+
+  for branch in $branches; do
+    local branch_name_size=${#branch}
+
+    if [ $branch_name_size -gt $longest_branch_name_size ]; then
+      longest_branch_name_size=$branch_name_size
+    fi
+  done
+
+  for branch in $branches; do
+    local note=$(git config branch.$branch.note)
+    local prefix="  "
+    local branch_name_size=${#branch}
+    local num_spacers=$(($longest_branch_name_size-$branch_name_size+2))
+    local spacer=$(seq 1 $num_spacers | sed "s/.*/ /" | tr -d '\n')
+
+    if [ $branch == $current ]; then
+      prefix="* $GRN"
+    fi
+
+    echo "$prefix$branch$spacer$BLU$note$RES"
+  done
+}
+
+git_mm() {
+  local branch=$(git_branch)
+  git co $(git_default_branch) && git p && git co "$branch" && git m $(git_default_branch)
+}
+
+git_note() {
+  if [ $# -eq 0 ]; then
+    git config branch."$(git_branch)".note
+  else
+    git config --replace-all branch."$(git_branch)".note "$1"
+  fi
+}
+
 export -f git_color
 export -f git_branch
+export -f git_default_branch
+export -f git_b
+export -f git_mm
+export -f git_note
