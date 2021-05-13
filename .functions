@@ -55,13 +55,17 @@ git_b() {
     local prefix="  "
     local branch_name_size=${#branch}
     local num_spacers=$(($longest_branch_name_size-$branch_name_size+2))
-    local spacer=$(seq 1 $num_spacers | sed "s/.*/ /" | tr -d '\n')
+    local spacer=""
+
+    if [[ ! -z $note ]]; then
+      spacer=$(seq 1 $num_spacers | sed "s/.*/\./" | tr -d '\n')
+    fi
 
     if [ $branch == $current ]; then
       prefix="* $GRN"
     fi
 
-    echo "$prefix$branch$spacer$BLU$note$RES"
+    echo "$prefix$branch$RES$spacer$BLU$note$RES"
   done
 }
 
