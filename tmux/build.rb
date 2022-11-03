@@ -6,7 +6,6 @@ module Build
       @configuration ||= begin
         yaml = YAML.load_file(configuration_filepath)
         configuration_hash = JSON.parse(JSON[yaml], symbolize_names: true)
-        # puts configuration_hash
 
         Configuration.new(configuration_hash)
       end
