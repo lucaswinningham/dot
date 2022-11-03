@@ -1,0 +1,32 @@
+[user]
+  name = Lucas Winningham
+  email = lucas.winningham@gmail.com
+[alias]
+  a = add
+  ac = ! git add . && git commit -m
+  acp = ! . $HOME/.dot/git/add_commit_push.zsh
+  b = ! . $HOME/.dot/git/branch.zsh
+  c = commit -m
+  co = checkout
+  cob = ! . $HOME/.dot/git/checkout_branch.zsh
+  cp = ! . $HOME/.dot/git/commit_push.zsh
+  d = ! . $HOME/.dot/git/diff.zsh
+  m = merge --no-edit
+  note = ! . $HOME/.dot/git/note.zsh
+  p = pull
+  pushup = ! . $HOME/.dot/git/pushup.zsh
+  st = status
+  sync = remote prune origin
+[core]
+  editor = code --wait
+  pager = cat
+# [completion]
+#   commands = ???
+[init]
+  defaultBranch = main
+# [status]
+#   aheadBehind = true
+#   branch = true
+#   short = true
+[pull]
+  ff = only

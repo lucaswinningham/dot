@@ -1,0 +1,159 @@
+I, [2022-11-03T14:32:33.402955 #56146]  INFO -- : `tmux has-session -t example > /dev/null 2>&1`
+I, [2022-11-03T14:32:33.427241 #56146]  INFO -- : `tmux new-session -d -s example -x - -y -`
+I, [2022-11-03T14:32:33.441870 #56146]  INFO -- : `tmux display-message -p "#{session_id}"`
+I, [2022-11-03T14:32:33.466137 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:33.492230 #56146]  INFO -- : `tmux new-window -c $HOME/code/api -n 10x_backend`
+I, [2022-11-03T14:32:33.520196 #56146]  INFO -- : `tmux display-message -p "#{window_id}"`
+I, [2022-11-03T14:32:33.542587 #56146]  INFO -- : `tmux display-message -p "#{pane_id}"`
+I, [2022-11-03T14:32:33.565331 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:33.590233 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:33.617670 #56146]  INFO -- : `tmux new-window -c $HOME -n commands_example`
+I, [2022-11-03T14:32:33.642998 #56146]  INFO -- : `tmux display-message -p "#{window_id}"`
+I, [2022-11-03T14:32:33.668932 #56146]  INFO -- : `tmux display-message -p "#{pane_id}"`
+I, [2022-11-03T14:32:33.715405 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:33.740857 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:33.771821 #56146]  INFO -- : `tmux new-window -c $HOME -n complex_layout`
+I, [2022-11-03T14:32:33.833694 #56146]  INFO -- : `tmux display-message -p "#{window_id}"`
+I, [2022-11-03T14:32:33.866040 #56146]  INFO -- : `tmux display-message -p "#{pane_id}"`
+I, [2022-11-03T14:32:33.906719 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:33.936252 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:33.941145 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:33.945268 #56146]  INFO -- : `tmux wait-for -L \$1:@3:\%3`
+I, [2022-11-03T14:32:33.965979 #56146]  INFO -- : `tmux split-window -vP -c $HOME/code/api -l 70% -t %2 -F "#{pane_id}"`
+I, [2022-11-03T14:32:33.976799 #56146]  INFO -- : `tmux send-keys -t %3 'tmux wait-for -S \$1:@3:\%3:commands' Enter`
+I, [2022-11-03T14:32:34.008299 #56146]  INFO -- : `tmux wait-for \$1:@3:\%3:commands`
+I, [2022-11-03T14:32:34.014736 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.046624 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:34.052794 #56146]  INFO -- : `tmux split-window -hP -c $HOME -l 67% -t %4 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.089524 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.120860 #56146]  INFO -- : `tmux split-window -vP -c $HOME/code/api -l 71% -t %5 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.125697 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:34.131170 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:34.155847 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.185317 #56146]  INFO -- : `tmux split-window -vP -c $HOME -l 90% -t %4 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.191443 #56146]  INFO -- : `tmux wait-for -L \$1:@2:\%7`
+I, [2022-11-03T14:32:34.197226 #56146]  INFO -- : `tmux wait-for -L \$1:@2:\%2`
+I, [2022-11-03T14:32:34.202972 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:34.222290 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.228035 #56146]  INFO -- : `tmux wait-for -U \$1:@2:\%7`
+I, [2022-11-03T14:32:34.234113 #56146]  INFO -- : `tmux wait-for -U \$1:@2:\%2`
+I, [2022-11-03T14:32:34.255333 #56146]  INFO -- : `tmux split-window -vP -c $HOME -l 80% -t %6 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.261516 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:34.268109 #56146]  INFO -- : `tmux send-keys -t %7 'tmux wait-for -S \$1:@2:\%7' Enter`
+I, [2022-11-03T14:32:34.274039 #56146]  INFO -- : `tmux send-keys -t %2 'tmux wait-for -S \$1:@2:\%2' Enter`
+I, [2022-11-03T14:32:34.296619 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.302593 #56146]  INFO -- : `tmux wait-for \$1:@2:\%7`
+I, [2022-11-03T14:32:34.322261 #56146]  INFO -- : `tmux wait-for \$1:@2:\%2`
+I, [2022-11-03T14:32:34.337902 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:34.343760 #56146]  INFO -- : `tmux split-window -hP -c $HOME/code/api -l 50% -t %5 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.380350 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.411725 #56146]  INFO -- : `tmux split-window -vP -c $HOME -l 33% -t %8 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.417819 #56146]  INFO -- : `tmux wait-for -L \$1:@2:\%5`
+I, [2022-11-03T14:32:34.423554 #56146]  INFO -- : `tmux wait-for -L \$1:@2:\%10`
+I, [2022-11-03T14:32:34.450409 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.456448 #56146]  INFO -- : `tmux wait-for -U \$1:@2:\%5`
+I, [2022-11-03T14:32:34.462576 #56146]  INFO -- : `tmux wait-for -U \$1:@2:\%10`
+I, [2022-11-03T14:32:34.492591 #56146]  INFO -- : `tmux split-window -vP -c $HOME -l 56% -t %9 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.498754 #56146]  INFO -- : `tmux send-keys -t %5 'tmux wait-for -S \$1:@2:\%5' Enter`
+I, [2022-11-03T14:32:34.504426 #56146]  INFO -- : `tmux wait-for -L \$1:@4:\%4`
+I, [2022-11-03T14:32:34.510423 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:34.516341 #56146]  INFO -- : `tmux wait-for -L \$1:@4:\%11`
+I, [2022-11-03T14:32:34.522152 #56146]  INFO -- : `tmux send-keys -t %10 'tmux wait-for -S \$1:@2:\%10' Enter`
+I, [2022-11-03T14:32:34.535574 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.541474 #56146]  INFO -- : `tmux wait-for \$1:@2:\%5`
+I, [2022-11-03T14:32:34.547628 #56146]  INFO -- : `tmux wait-for -U \$1:@4:\%4`
+I, [2022-11-03T14:32:34.609031 #56146]  INFO -- : `tmux wait-for -U \$1:@4:\%11`
+I, [2022-11-03T14:32:34.619501 #56146]  INFO -- : `tmux wait-for \$1:@2:\%10`
+I, [2022-11-03T14:32:34.637892 #56146]  INFO -- : `tmux split-window -hP -c $HOME -l 50% -t %8 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.644179 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:34.653427 #56146]  INFO -- : `tmux send-keys -t %4 'tmux wait-for -S \$1:@4:\%4' Enter`
+I, [2022-11-03T14:32:34.659701 #56146]  INFO -- : `tmux send-keys -t %11 'tmux wait-for -S \$1:@4:\%11' Enter`
+I, [2022-11-03T14:32:34.682765 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.736404 #56146]  INFO -- : `tmux wait-for \$1:@4:\%4`
+I, [2022-11-03T14:32:34.747487 #56146]  INFO -- : `tmux wait-for \$1:@4:\%11`
+I, [2022-11-03T14:32:34.753648 #56146]  INFO -- : `tmux wait-for -L \$1:@4:\%8`
+I, [2022-11-03T14:32:34.760139 #56146]  INFO -- : `tmux split-window -vP -c $HOME -l 66% -t %12 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.766360 #56146]  INFO -- : `tmux wait-for -L \$1:@4:\%13`
+I, [2022-11-03T14:32:34.813528 #56146]  INFO -- : `tmux wait-for -U \$1:@4:\%8`
+I, [2022-11-03T14:32:34.819595 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:34.826092 #56146]  INFO -- : `tmux wait-for -U \$1:@4:\%13`
+I, [2022-11-03T14:32:34.849997 #56146]  INFO -- : `tmux send-keys -t %8 'tmux wait-for -S \$1:@4:\%8' Enter`
+I, [2022-11-03T14:32:34.856718 #56146]  INFO -- : `tmux wait-for -L \$1`
+I, [2022-11-03T14:32:34.863351 #56146]  INFO -- : `tmux send-keys -t %13 'tmux wait-for -S \$1:@4:\%13' Enter`
+I, [2022-11-03T14:32:34.883251 #56146]  INFO -- : `tmux wait-for \$1:@4:\%8`
+I, [2022-11-03T14:32:34.890210 #56146]  INFO -- : `tmux split-window -vP -c $HOME -l 50% -t %14 -F "#{pane_id}"`
+I, [2022-11-03T14:32:34.896091 #56146]  INFO -- : `tmux wait-for \$1:@4:\%13`
+I, [2022-11-03T14:32:35.063753 #56146]  INFO -- : `tmux wait-for -U \$1`
+I, [2022-11-03T14:32:35.095858 #56146]  INFO -- : `tmux wait-for -L \$1:@4:\%6`
+I, [2022-11-03T14:32:35.101704 #56146]  INFO -- : `tmux wait-for -L \$1:@4:\%9`
+I, [2022-11-03T14:32:35.107477 #56146]  INFO -- : `tmux wait-for -L \$1:@4:\%12`
+I, [2022-11-03T14:32:35.113171 #56146]  INFO -- : `tmux wait-for -L \$1:@4:\%14`
+I, [2022-11-03T14:32:35.118886 #56146]  INFO -- : `tmux wait-for -L \$1:@4:\%15`
+I, [2022-11-03T14:32:35.211383 #56146]  INFO -- : `tmux wait-for -U \$1:@4:\%6`
+I, [2022-11-03T14:32:35.230907 #56146]  INFO -- : `tmux wait-for -U \$1:@4:\%9`
+I, [2022-11-03T14:32:35.240540 #56146]  INFO -- : `tmux wait-for -U \$1:@4:\%14`
+I, [2022-11-03T14:32:35.247632 #56146]  INFO -- : `tmux wait-for -U \$1:@4:\%12`
+I, [2022-11-03T14:32:35.254638 #56146]  INFO -- : `tmux wait-for -U \$1:@4:\%15`
+I, [2022-11-03T14:32:35.260475 #56146]  INFO -- : `tmux send-keys -t %6 'tmux wait-for -S \$1:@4:\%6' Enter`
+I, [2022-11-03T14:32:35.270847 #56146]  INFO -- : `tmux send-keys -t %9 'tmux wait-for -S \$1:@4:\%9' Enter`
+I, [2022-11-03T14:32:35.276864 #56146]  INFO -- : `tmux send-keys -t %14 'tmux wait-for -S \$1:@4:\%14' Enter`
+I, [2022-11-03T14:32:35.283544 #56146]  INFO -- : `tmux send-keys -t %12 'tmux wait-for -S \$1:@4:\%12' Enter`
+I, [2022-11-03T14:32:35.290954 #56146]  INFO -- : `tmux send-keys -t %15 'tmux wait-for -S \$1:@4:\%15' Enter`
+I, [2022-11-03T14:32:35.296989 #56146]  INFO -- : `tmux wait-for \$1:@4:\%6`
+I, [2022-11-03T14:32:35.305780 #56146]  INFO -- : `tmux wait-for \$1:@4:\%9`
+I, [2022-11-03T14:32:35.359563 #56146]  INFO -- : `tmux wait-for \$1:@4:\%14`
+I, [2022-11-03T14:32:35.366789 #56146]  INFO -- : `tmux wait-for \$1:@4:\%12`
+I, [2022-11-03T14:32:35.372805 #56146]  INFO -- : `tmux wait-for \$1:@4:\%15`
+I, [2022-11-03T14:32:37.260974 #56146]  INFO -- : `tmux send-keys -t %3 echo\ \"Hello,\ world.\" Enter`
+I, [2022-11-03T14:32:37.304045 #56146]  INFO -- : `tmux send-keys -t %3 'tmux wait-for -S \$1:@3:\%3:commands' Enter`
+I, [2022-11-03T14:32:37.336350 #56146]  INFO -- : `tmux wait-for \$1:@3:\%3:commands`
+I, [2022-11-03T14:32:37.378424 #56146]  INFO -- : `tmux send-keys -t %3 curl\ https://example.com Enter`
+I, [2022-11-03T14:32:37.433810 #56146]  INFO -- : `tmux send-keys -t %3 'tmux wait-for -S \$1:@3:\%3:commands' Enter`
+I, [2022-11-03T14:32:37.474845 #56146]  INFO -- : `tmux wait-for \$1:@3:\%3:commands`
+I, [2022-11-03T14:32:37.667623 #56146]  INFO -- : `tmux send-keys -t %3 \[\ -d\ \"/\"\ \]\ \&\&\ echo\ \'Bully\ for\ you\ for\ not\ destroying\ your\ file\ system\!\' Enter`
+I, [2022-11-03T14:32:37.705409 #56146]  INFO -- : `tmux send-keys -t %3 'tmux wait-for -S \$1:@3:\%3:commands' Enter`
+I, [2022-11-03T14:32:37.738986 #56146]  INFO -- : `tmux wait-for \$1:@3:\%3:commands`
+I, [2022-11-03T14:32:37.779322 #56146]  INFO -- : `tmux send-keys -t %4 C-l`
+I, [2022-11-03T14:32:37.786036 #56146]  INFO -- : `tmux send-keys -t %3 target_file\=\"\$HOME/.gitconfig\"\;\ if\ \[\[\ -f\ \"\$HOME/.gitconfig\"\ \]\]\;\ then\ echo\ \"Found\ \$target_file\"\;\ else\ echo\ \"Could\ not\ find\ \$target_file\"\;\ fi Enter`
+I, [2022-11-03T14:32:37.824352 #56146]  INFO -- : `tmux send-keys -t %3 'tmux wait-for -S \$1:@3:\%3:commands' Enter`
+I, [2022-11-03T14:32:37.861511 #56146]  INFO -- : `tmux wait-for \$1:@3:\%3:commands`
+I, [2022-11-03T14:32:37.896379 #56146]  INFO -- : `tmux send-keys -t %3 ssh\ localhost Enter`
+I, [2022-11-03T14:32:37.903507 #56146]  INFO -- : `tmux send-keys -t %2 C-l`
+I, [2022-11-03T14:32:37.931351 #56146]  INFO -- : `tmux send-keys -t %3 'tmux wait-for -S \$1:@3:\%3:commands' Enter`
+I, [2022-11-03T14:32:37.968352 #56146]  INFO -- : `tmux wait-for \$1:@3:\%3:commands`
+I, [2022-11-03T14:32:38.392745 #56146]  INFO -- : `tmux send-keys -t %6 C-l`
+I, [2022-11-03T14:32:38.610108 #56146]  INFO -- : `tmux send-keys -t %8 C-l`
+I, [2022-11-03T14:32:38.762121 #56146]  INFO -- : `tmux send-keys -t %5 C-l`
+I, [2022-11-03T14:32:38.803418 #56146]  INFO -- : `tmux clear-history -t %4`
+I, [2022-11-03T14:32:38.923746 #56146]  INFO -- : `tmux clear-history -t %2`
+I, [2022-11-03T14:32:38.930100 #56146]  INFO -- : `tmux send-keys -t %11 C-l`
+I, [2022-11-03T14:32:38.958118 #56146]  INFO -- : `tmux send-keys -t %2 tail\ -f\ api.log`
+I, [2022-11-03T14:32:39.198943 #56146]  INFO -- : `tmux send-keys -t %7 C-l`
+I, [2022-11-03T14:32:39.293298 #56146]  INFO -- : `tmux send-keys -t %9 C-l`
+I, [2022-11-03T14:32:39.395406 #56146]  INFO -- : `tmux send-keys -t %12 C-l`
+I, [2022-11-03T14:32:39.481422 #56146]  INFO -- : `tmux clear-history -t %6`
+I, [2022-11-03T14:32:39.516421 #56146]  INFO -- : `tmux send-keys -t %13 C-l`
+I, [2022-11-03T14:32:39.542815 #56146]  INFO -- : `tmux send-keys -t %14 C-l`
+I, [2022-11-03T14:32:39.548738 #56146]  INFO -- : `tmux send-keys -t %15 C-l`
+I, [2022-11-03T14:32:39.653169 #56146]  INFO -- : `tmux clear-history -t %8`
+I, [2022-11-03T14:32:39.764623 #56146]  INFO -- : `tmux send-keys -t %10 C-l`
+I, [2022-11-03T14:32:39.802454 #56146]  INFO -- : `tmux clear-history -t %5`
+I, [2022-11-03T14:32:39.821622 #56146]  INFO -- : `tmux send-keys -t %5 api\ test\ command`
+I, [2022-11-03T14:32:39.978081 #56146]  INFO -- : `tmux clear-history -t %11`
+I, [2022-11-03T14:32:40.240175 #56146]  INFO -- : `tmux clear-history -t %7`
+I, [2022-11-03T14:32:40.257104 #56146]  INFO -- : `tmux send-keys -t %7 git\ status`
+I, [2022-11-03T14:32:40.317738 #56146]  INFO -- : `tmux clear-history -t %9`
+I, [2022-11-03T14:32:40.417634 #56146]  INFO -- : `tmux clear-history -t %12`
+I, [2022-11-03T14:32:40.538480 #56146]  INFO -- : `tmux clear-history -t %13`
+I, [2022-11-03T14:32:40.564604 #56146]  INFO -- : `tmux clear-history -t %14`
+I, [2022-11-03T14:32:40.578085 #56146]  INFO -- : `tmux clear-history -t %15`
+I, [2022-11-03T14:32:40.592654 #56146]  INFO -- : `tmux select-pane -t %4`
+I, [2022-11-03T14:32:40.648220 #56146]  INFO -- : `tmux send-keys -t %3 echo\ \'Hello,\ from\ SSH\!\' Enter`
+I, [2022-11-03T14:32:40.670292 #56146]  INFO -- : `tmux wait-for -U \$1:@3:\%3`
+I, [2022-11-03T14:32:40.691419 #56146]  INFO -- : `tmux select-pane -t %3`
+I, [2022-11-03T14:32:40.789334 #56146]  INFO -- : `tmux clear-history -t %10`
+I, [2022-11-03T14:32:40.814315 #56146]  INFO -- : `tmux send-keys -t %10 api\ build\ command`
+I, [2022-11-03T14:32:40.845464 #56146]  INFO -- : `tmux select-pane -t %2`
+I, [2022-11-03T14:32:40.859732 #56146]  INFO -- : `tmux kill-window -t 0`
+I, [2022-11-03T14:32:40.873121 #56146]  INFO -- : `tmux select-window -t @3`
+I, [2022-11-03T14:32:40.886850 #56146]  INFO -- : `tmux attach-session -t example`
