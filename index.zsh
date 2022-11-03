@@ -6,8 +6,8 @@ source "$root_dir/functions/set.zsh"
 
 puts "Initializing..."
 
-# puts && puts "openssl:"
-# source "$root_dir/openssl.zsh"
+puts && puts "openssl:"
+source "$root_dir/openssl.zsh"
 
 puts && puts "zlib:"
 source "$root_dir/zlib.zsh"
@@ -31,6 +31,9 @@ source "$root_dir/visual_studio_code.zsh"
 
 puts && puts "tmux:"
 source "$root_dir/tmux.zsh"
+
+puts && puts "  --- LOCAL ---"
+source "$root_dir/local/index.zsh"
 
 puts && puts "Done."
 

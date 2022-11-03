@@ -12,6 +12,7 @@ module Setup
       @init ||= true.tap do
         $LOAD_PATH.unshift(lib_directory) unless $LOAD_PATH.include?(lib_directory)
 
+        ENV["BUNDLE_GEMFILE"] = "#{root_directory}/Gemfile"
         Bundler.setup(:default, environment)
         Bundler.require(:default, environment)
 

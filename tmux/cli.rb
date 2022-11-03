@@ -43,8 +43,24 @@ module MyTmux
         end
       end
 
+      class Kill < Dry::CLI::Command
+        desc 'Kill a tmux session by name'
+
+        argument(
+          :session_name,
+          type: :string,
+          required: true,
+          desc: 'tmux session name'
+        )
+
+        def call(session_name:, **)
+          `tmux kill-session -t #{session_name}`
+        end
+      end
+
       register 'console', Console, aliases: ['c', '-c', '--console']
       register 'build', Rebuild
+      register 'kill', Kill
     end
   end
 end
