@@ -7,7 +7,7 @@ module Build
     class Logger
       include Serialization
 
-      readable(:filepath, default: "#{Build.root_directory}/build.log")
+      readable(:filepath, default: "#{Build.root_directory}/logs/build.log")
       readable(:file_flags, default: File::WRONLY | File::CREAT | File::TRUNC)
       readable(:level, default: ::Logger::DEBUG)
     end
