@@ -28,9 +28,6 @@ source "$first_dir/ruby/index.zsh"
 puts && puts "tmux:"
 source "$first_dir/tmux/index.zsh"
 
-puts && puts "Local:"
-source "$first_dir/local/index.zsh"
-
 puts && puts "Done."
 
 source "$root_dir/functions/unset.zsh"
