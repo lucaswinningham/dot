@@ -3,8 +3,8 @@
 autoload -U colors && colors # black, red, green, yellow, blue, magenta, cyan, white
 
 puts() {
-  local kind=$1
-  local message=$2
+  local kind="$1"
+  local message="$2"
   local color
   declare -A color_map
   local color_map=( [info]=white [cmd]=blue [succ]=green [warn]=yellow [err]=red [mute]=black )
