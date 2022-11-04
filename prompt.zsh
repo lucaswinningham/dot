@@ -14,6 +14,8 @@ precmd() {
   else
     git_branch="$(git branch --show-current)"
     echo "$git_branch"
+    # default_branch="$(git remote show origin | sed -n '/HEAD branch/s/.*: //p)"
+    # unstaged_commits="$(git log origin/$default_branch..HEAD)"
 
     if [[ "$git_status" == *"Changes not staged for commit"* ]]; then
       echo red
@@ -28,8 +30,8 @@ precmd() {
       echo green
       PROMPT='%F{blue}%~ %F{green}[${git_branch}] %F{white}$%f '
     else
-      echo magenta
-      PROMPT='%F{blue}%~ %F{magenta}[${git_branch}] %F{white}$%f '
+      echo black
+      PROMPT='%F{blue}%~ %F{black}[${git_branch}] %F{white}$%f '
     fi
   fi
 

@@ -1,2 +1,4 @@
 local/**
+!local/bin/run
+!local/index.zsh
 tmux/logs/**

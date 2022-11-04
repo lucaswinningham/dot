@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-dotlink "$HOME/.tmux.conf" "$root_dir/tmux.conf"
+dotlink "$HOME/.tmux.conf" "$HOME/.dot/tmux.conf"

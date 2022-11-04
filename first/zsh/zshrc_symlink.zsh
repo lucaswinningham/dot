@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-dotlink "$HOME/.zshrc" "$root_dir/zshrc"
+dotlink "$HOME/.zshrc" "$HOME/.dot/zshrc"

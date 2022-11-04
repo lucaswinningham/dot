@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-dotlink "$HOME/.gitconfig" "$root_dir/git/config"
+dotlink "$HOME/.gitconfig" "$HOME/.dot/gitconfig"
