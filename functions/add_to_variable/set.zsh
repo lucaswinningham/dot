@@ -6,6 +6,8 @@ add_to_variable() {
   local delimiter="$3"
   local variable_value=${(P)variable_name}
 
+  # TODO: echoing "\$$variable_name" is actually printing out the value!
+
   if [[ -z "${variable_value// }" ]]; then
     puts warn "\$$variable_name undefined, setting..."
     local cmd="export $variable_name=\"$addition\""

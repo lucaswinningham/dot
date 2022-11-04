@@ -1,97 +1,66 @@
 #!/bin/zsh
 
-# autoload -Uz add-zsh-hook vcs_info
 autoload -U colors && colors # black, red, green, yellow, blue, magenta, cyan, white
 
-precmd() {
-  # vcs_info
+# https://joshdick.net/2017/06/08/my_git_prompt_for_zsh_revisited.html
 
-  git_status="$(git status --long 2> /dev/null)"
-  echo "$git_status"
-
-  if [[ -z "$git_status" ]]; then
-    PROMPT='%F{blue}%~ %F{white}$%f '
-  else
-    git_branch="$(git branch --show-current)"
-    echo "$git_branch"
-    # default_branch="$(git remote show origin | sed -n '/HEAD branch/s/.*: //p)"
-    # unstaged_commits="$(git log origin/$default_branch..HEAD)"
-
-    if [[ "$git_status" == *"Changes not staged for commit"* ]]; then
-      echo red
-      PROMPT='%F{blue}%~ %F{red}[${git_branch}] %F{white}$%f '
-    elif [[ "$git_status" == *"Changes to be committed"* ]]; then
-      echo yellow
-      PROMPT='%F{blue}%~ %F{yellow}[${git_branch}] %F{white}$%f '
-    elif [[ "$git_status" == *"Your branch is ahead of"* ]]; then
-      echo white
-      PROMPT='%F{blue}%~ %F{white}[${git_branch}] %F{white}$%f '
-    elif [[ "$git_status" == *"nothing to commit, working tree clean"* ]]; then
-      echo green
-      PROMPT='%F{blue}%~ %F{green}[${git_branch}] %F{white}$%f '
-    else
-      echo black
-      PROMPT='%F{blue}%~ %F{black}[${git_branch}] %F{white}$%f '
-    fi
-  fi
-
-  # if [[ -n ${git_status} ]]; then
-  #   git_status=$(command git status --long 2> /dev/null)
-
-  #   if [[ -n $git_status ]]; then
-  #     PROMPT='%F{blue}%~ %F{red}[${branch}] %F{white}$%f '
-  #   else
-  #     PROMPT='%F{blue}%~ %F{green}[${branch}] %F{white}$%f '
-  #   fi
-  # else
-  #   PROMPT='%F{blue}%~ %F{white}$%f '
-  # fi
-
-  # if [[ -n ${vcs_info_msg_0_} ]]; then
-  #   status=$(command git status --long 2> /dev/null)
-
-  #   if [[ -n $status ]]; then
-  #     PROMPT='%F{blue}%~ %F{red}${vcs_info_msg_0_} %F{white}$%f '
-  #   else
-  #     PROMPT='%F{blue}%~ %F{green}${vcs_info_msg_0_} %F{white}$%f '
-  #   fi
-  # else
-  #   PROMPT='%F{blue}%~ %F{white}$%f '
-  # fi
+ssh_info() {
+  [[ "$SSH_CONNECTION" != '' ]] && echo "%(!.%F{red}.%F{yellow})%n%f@%F{green}%m%f:" || echo ""
 }
 
-# zstyle ':vcs_info:git:*' formats "[%b]"
+git_info() {
+  # Exit if not inside a Git repository
+  ! git rev-parse --is-inside-work-tree > /dev/null 2>&1 && return
+
+  # Git branch/tag, or name-rev if on detached head
+  local git_location=${$(git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD)#(refs/heads/|tags/)}
+
+  local ahead="%F{red}⇡NUM%f"
+  local behind="%F{cyan}⇣NUM%f"
+  local merging="%F{magenta}⚡︎%f"
+  local untracked="%F{red}●%f"
+  local modified="%F{yellow}●%f"
+  local staged="%F{green}●%f"
+
+  local -a divergences
+  local -a flags
+
+  local num_ahead="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
+  if [ "$num_ahead" -gt 0 ]; then
+    divergences+=( "${ahead//NUM/$num_ahead}" )
+  fi
+
+  local num_behind="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
+  if [ "$num_behind" -gt 0 ]; then
+    divergences+=( "${behind//NUM/$num_behind}" )
+  fi
+
+  local git_dir="$(git rev-parse --git-dir 2> /dev/null)"
+  if [ -n $git_dir ] && test -r $git_dir/MERGE_HEAD; then
+    flags+=( "$merging" )
+  fi
+
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    flags+=( "$untracked" )
+  fi
+
+  if ! git diff --quiet 2> /dev/null; then
+    flags+=( "$modified" )
+  fi
+
+  if ! git diff --cached --quiet 2> /dev/null; then
+    flags+=( "$staged" )
+  fi
+
+  local -a info
+  info+=( "%F{white}$git_location%f" )
+  [[ ${#divergences[@]} -ne 0 ]] && info+=( "${(j::)divergences}" )
+  [[ ${#flags[@]} -ne 0 ]] && info+=( "${(j::)flags}" )
+  echo "${(j: :)info} "
+}
+
+PS1="\$(ssh_info)%F{blue}%~ \$(git_info)%F{white}$%f "
 
 setopt promptsubst
-
-# https://salferrarello.com/zsh-git-status-prompt/
-
-# precmd() { vcs_info }
-# PROMPT='%F{blue}%~${vcs_info_msg_0_} %F{white}$%f '
-
-# zstyle ':vcs_info:*' check-for-changes true
-# zstyle ':vcs_info:*' unstagedstr ' %F{red}*'
-# zstyle ':vcs_info:*' stagedstr ' %F{yellow}+'
-# zstyle ':vcs_info:git:*' formats " %F{white}[%b]%u%c%f"
-# zstyle ':vcs_info:git:*' actionformats " %F{white}[%b]|%F{magenta}%a%u%c%f"
-
-# https://medium.com/pareture/simplest-zsh-prompt-configs-for-git-branch-name-3d01602a6f33
-
-# function git_branch_name()
-# {
-#   branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-#   if [[ $branch == "" ]];
-#   then
-#     :
-#   else
-#     echo '- ('$branch')'
-#   fi
-# }
-
-# # Enable substitution in the prompt.
-# setopt prompt_subst
-
-# # Config for prompt. PS1 synonym.
-# prompt='%2/ $(git_branch_name) > '
 
 puts succ "Prompt initialized."
