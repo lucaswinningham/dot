@@ -1,40 +1,57 @@
 #!/bin/zsh
 
-autoload -Uz add-zsh-hook vcs_info
+# autoload -Uz add-zsh-hook vcs_info
 autoload -U colors && colors # black, red, green, yellow, blue, magenta, cyan, white
 
 precmd() {
-  vcs_info
+  # vcs_info
 
-  # git branch --show-current
-  # local git_status="$(git status 2> /dev/null)"
+  git_status="$(git status --long 2> /dev/null)"
 
-  # if [[ $git_status == *"Changes not staged for commit"* ]]; then
-  #   echo -e $RED
-  # elif [[ $git_status == *"Changes to be committed"* ]]; then
-  #   echo -e $YEL
-  # elif [[ $git_status == *"Your branch is ahead of"* ]]; then
-  #   echo -e $WHI
-  # elif [[ $git_status == *"nothing to commit, working tree clean"* ]]; then
-  #   echo -e $GRN
+  if [[ -z "$git_status" ]]; then
+    PROMPT='%F{blue}%~ %F{white}$%f '
+  else
+    git_branch="$(git branch --show-current)"
+
+    if [[ "$git_status" == *"Changes not staged for commit"* ]]; then
+      PROMPT='%F{blue}%~ %F{red}[${git_branch}] %F{white}$%f '
+    elif [[ "$git_status" == *"Changes to be committed"* ]]; then
+      PROMPT='%F{blue}%~ %F{yellow}[${git_branch}] %F{white}$%f '
+    elif [[ "$git_status" == *"Your branch is ahead of"* ]]; then
+      PROMPT='%F{blue}%~ %F{white}[${git_branch}] %F{white}$%f '
+    elif [[ "$git_status" == *"nothing to commit, working tree clean"* ]]; then
+      PROMPT='%F{blue}%~ %F{green}[${git_branch}] %F{white}$%f '
+    else
+      PROMPT='%F{blue}%~ %F{magenta}[${git_branch}] %F{white}$%f '
+    fi
+  fi
+
+  # if [[ -n ${git_status} ]]; then
+  #   git_status=$(command git status --long 2> /dev/null)
+
+  #   if [[ -n $git_status ]]; then
+  #     PROMPT='%F{blue}%~ %F{red}[${branch}] %F{white}$%f '
+  #   else
+  #     PROMPT='%F{blue}%~ %F{green}[${branch}] %F{white}$%f '
+  #   fi
   # else
-  #   echo -e $PUR
+  #   PROMPT='%F{blue}%~ %F{white}$%f '
   # fi
 
-  if [[ -n ${vcs_info_msg_0_} ]]; then
-    STATUS=$(command git status --porcelain 2> /dev/null)
+  # if [[ -n ${vcs_info_msg_0_} ]]; then
+  #   status=$(command git status --long 2> /dev/null)
 
-    if [[ -n $STATUS ]]; then
-      PROMPT='%F{blue}%~ %F{red}${vcs_info_msg_0_} %F{white}$%f '
-    else
-      PROMPT='%F{blue}%~ %F{green}${vcs_info_msg_0_} %F{white}$%f '
-    fi
-  else
-    PROMPT='%F{blue}%~ %F{white}$%f '
-  fi
+  #   if [[ -n $status ]]; then
+  #     PROMPT='%F{blue}%~ %F{red}${vcs_info_msg_0_} %F{white}$%f '
+  #   else
+  #     PROMPT='%F{blue}%~ %F{green}${vcs_info_msg_0_} %F{white}$%f '
+  #   fi
+  # else
+  #   PROMPT='%F{blue}%~ %F{white}$%f '
+  # fi
 }
 
-zstyle ':vcs_info:git:*' formats "[%b]"
+# zstyle ':vcs_info:git:*' formats "[%b]"
 
 setopt promptsubst
 
@@ -68,4 +85,4 @@ setopt promptsubst
 # # Config for prompt. PS1 synonym.
 # prompt='%2/ $(git_branch_name) > '
 
-puts succ "Prompt set."
+puts succ "Prompt initialized."

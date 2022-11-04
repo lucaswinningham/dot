@@ -24,9 +24,9 @@
 #   commands = ???
 [init]
   defaultBranch = main
-# [status]
-#   aheadBehind = true
-#   branch = true
-#   short = true
+[status]
+  aheadBehind = true
+  branch = true
+  short = true
 [pull]
   ff = only
