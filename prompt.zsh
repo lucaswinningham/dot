@@ -7,21 +7,28 @@ precmd() {
   # vcs_info
 
   git_status="$(git status --long 2> /dev/null)"
+  echo "$git_status"
 
   if [[ -z "$git_status" ]]; then
     PROMPT='%F{blue}%~ %F{white}$%f '
   else
     git_branch="$(git branch --show-current)"
+    echo "$git_branch"
 
     if [[ "$git_status" == *"Changes not staged for commit"* ]]; then
+      echo red
       PROMPT='%F{blue}%~ %F{red}[${git_branch}] %F{white}$%f '
     elif [[ "$git_status" == *"Changes to be committed"* ]]; then
+      echo yellow
       PROMPT='%F{blue}%~ %F{yellow}[${git_branch}] %F{white}$%f '
     elif [[ "$git_status" == *"Your branch is ahead of"* ]]; then
+      echo white
       PROMPT='%F{blue}%~ %F{white}[${git_branch}] %F{white}$%f '
     elif [[ "$git_status" == *"nothing to commit, working tree clean"* ]]; then
+      echo green
       PROMPT='%F{blue}%~ %F{green}[${git_branch}] %F{white}$%f '
     else
+      echo magenta
       PROMPT='%F{blue}%~ %F{magenta}[${git_branch}] %F{white}$%f '
     fi
   fi
