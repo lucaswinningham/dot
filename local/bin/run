@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+gem 'dry-cli'
+require 'dry/cli'
+
+module Run
+  module CLI
+    module Commands
+      extend Dry::CLI::Registry
+
+      module Work
+        class Up < Dry::CLI::Command
+          desc 'Reinitialize your work environment'
+
+          def call(*, **)
+            puts "What's `up`?"
+
+            # Maybe...
+            # `mytmux build $HOME/.dot/local/tmux/example_configuration.yaml`
+          end
+        end
+      end
+
+      register 'work up', Work::Up
+    end
+  end
+end
+
+Dry::CLI::Parser::Result.define_singleton_method :failure do |*, **|
+  help
+end
+
+Dry::CLI.new(Run::CLI::Commands).call

@@ -1,2 +1,4 @@
-local/**
-tmux/logs/**
+local/**/*
+!local/bin/
+!local/bin/run
+tmux/logs/**/*
