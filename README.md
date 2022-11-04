@@ -1,5 +1,7 @@
 # Dot
 
+## Set up
+
 First, open a terminal window and change the preferred shell to zsh.
 
 ```zsh
@@ -38,117 +40,13 @@ Navigate to `$HOME/.dot/iTerm/profile.json` then > Open. The profile named "Dot"
 
    - download settings
 
-Install Node
+Run `run`, a command for personalizing local machine commands.
 
 ```zsh
-brew install node
+run work up
 ```
 
-Setup .native environment
-
-```zsh
-cd && mkdir -p .native && cd .native && touch .profile
-```
-
-#### $HOME/.native/.profile
-
-```zsh
-#!/usr/bin/env bash
-
-this_dir="${BASH_SOURCE%/*}"
-
-# Recursively iterates over directories looking for .sh files sourcing them if they exist
-for executable in $(find "$this_dir" -regex ".*\.sh"); do
-  [ -f "$executable" ] && source "$executable"
-done
-
-unset this_dir
-
-```
-
-```zsh
-cd && cd .native && mkdir -p .tmux && touch .tmux/.restore.sh
-```
-
-#### $HOME/.native/.tmux/.restore.sh
-
-```zsh
-#!/usr/bin/env bash
-
-restore_tmux_work() {
-  local session_name="work"
-
-  tmux has-session -t "$session_name" &> /dev/null
-
-  if [ $? != 0 ]; then
-    tmux new-session -s "$session_name" -d
-    _rebuild_session
-    tmux select-window -t repos
-  fi
-
-  tmux attach -t "$session_name"
-
-  return 0
-}
-
-_rebuild_session() {
-  _rebuild_repos_window
-  _rebuild_servers_window
-  # _rebuild_testers_window
-  # _rebuild_linters_window
-  # _rebuild_dbs_window
-  # _rebuild_irb_window
-  # _rebuild_ssh_window
-  # _rebuild_bg_window
-}
-
-_rebuild_repos_window() {
-  tmux rename-window repos
-
-  _initialize_pane "$HOME/code/api"
-
-  # tmux split-window -v
-  # _initialize_pane "$HOME/code/web"
-
-  # tmux split-window -v
-  # _initialize_pane "$HOME/code/mobile"
-
-  # tmux select-layout even-vertical
-}
-
-_rebuild_servers_window() {
-  tmux new-window -n servers
-
-  _initialize_pane "$HOME/code/api"
-  tmux send-keys "rails s" Enter
-
-  # tmux split-window -v
-  # _initialize_pane "$HOME/code/web"
-  # tmux send-keys "npm run" Enter
-
-  # tmux select-layout even-vertical
-}
-
-_initialize_pane() {
-  local dir="$1"
-
-  _source_profile
-  tmux send-keys "cd $dir" Enter
-  _clear_screen
-}
-
-_source_profile() {
-  tmux send-keys "source $HOME/.bashrc" Enter
-}
-
-_clear_screen() {
-  tmux send-keys clear Enter
-  tmux clear-history # Not working
-}
-
-```
-
-Make `$HOME/.bashrc` point to `$HOME/.zshrc`.
+<!-- Make `$HOME/.bashrc` point to `$HOME/.zshrc`.
 
 #### $HOME/.bashrc
 
@@ -157,7 +55,9 @@ Make `$HOME/.bashrc` point to `$HOME/.zshrc`.
 
 source "$HOME/.zshrc"
 
-```
+``` -->
+
+## Clean up
 
 Reload the environment.
 
@@ -180,7 +80,7 @@ Remove `$HOME/Downloads`.
 rm "$HOME/Downloads/*"
 ```
 
-### Checks
+## Check
 
 Make sure that the Ruby executable is coming from rvm.
 
