@@ -3,6 +3,7 @@
 autoload -U colors && colors # black, red, green, yellow, blue, magenta, cyan, white
 
 # https://joshdick.net/2017/06/08/my_git_prompt_for_zsh_revisited.html
+# https://github.com/joshdick/dotfiles/blob/main/zshrc.symlink
 
 ssh_info() {
   [[ "$SSH_CONNECTION" != '' ]] && echo "%(!.%F{red}.%F{yellow})%n%f@%F{green}%m%f:" || echo ""
