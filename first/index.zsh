@@ -1,9 +1,6 @@
 #!/bin/zsh
 
 first_dir=${0:a:h}
-root_dir=$(readlink -f "$first_dir/..")
-
-source "$root_dir/functions/set.zsh"
 
 puts "Running first time setup..."
 
@@ -29,5 +26,3 @@ puts && puts "tmux:"
 source "$first_dir/tmux/index.zsh"
 
 puts && puts "Done."
-
-source "$root_dir/functions/unset.zsh"

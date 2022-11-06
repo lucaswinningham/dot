@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-puts cmd "  bundle --gemfile=\"$root_dir/tmux/Gemfile\""
-bundle --gemfile="$root_dir/tmux/Gemfile"
+puts cmd "  bundle --gemfile=\"$HOME/.dot/tmux/Gemfile\""
+bundle --gemfile="$HOME/.dot/tmux/Gemfile"

@@ -13,7 +13,7 @@ Clone the repo from wherever ($HOME is a good place) then run the first time scr
 ```zsh
 cd # or wherever
 git clone https://github.com/lucaswinningham/dot.git
-./dot/first/index.zsh
+./dot/first.zsh
 ```
 
 Copy the public key and add it to your GitHub's SSH and GPG keys settings.

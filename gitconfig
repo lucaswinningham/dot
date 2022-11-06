@@ -26,5 +26,6 @@
   defaultBranch = main
 [status]
   short = true
+  showUntrackedFiles = all
 [pull]
   ff = only
