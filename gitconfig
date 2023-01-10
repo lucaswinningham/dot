@@ -5,12 +5,13 @@
   a = add
   ac = ! git add . && git commit -m
   acp = ! . $HOME/.dot/git/add_commit_push.zsh
-  b = ! . $HOME/.dot/git/branch.zsh
+  b = branch
   c = commit -m
   co = checkout
   cob = ! . $HOME/.dot/git/checkout_branch.zsh
   cp = ! . $HOME/.dot/git/commit_push.zsh
   d = ! . $HOME/.dot/git/diff.zsh
+  ls = ! . $HOME/.dot/git/list.zsh
   m = merge --no-edit
   note = ! . $HOME/.dot/git/note.zsh
   p = pull
@@ -28,4 +29,4 @@
   short = true
   showUntrackedFiles = all
 [pull]
-  ff = only
+  rebase = false

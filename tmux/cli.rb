@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+begin
+  require 'dry/cli'
+rescue LoadError
+  puts 'Run `gem install dry-cli`'
+  raise
+end
+
 module MyTmux
   module CLI
     module Commands

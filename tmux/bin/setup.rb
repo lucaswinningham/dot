@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'rubygems'
-require 'bundler'
-
 require_relative 'setup/environment'
 require_relative 'setup/ruby_library_groups'
 
@@ -11,10 +8,6 @@ module Setup
     def init
       @init ||= true.tap do
         $LOAD_PATH.unshift(lib_directory) unless $LOAD_PATH.include?(lib_directory)
-
-        ENV["BUNDLE_GEMFILE"] = "#{root_directory}/Gemfile"
-        Bundler.setup(:default, environment)
-        Bundler.require(:default, environment)
 
         ruby_library_groups.require(:default, environment)
       end
