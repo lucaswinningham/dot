@@ -8,12 +8,12 @@ First, open a terminal window and change the preferred shell to zsh.
 chsh -s $(which zsh)
 ```
 
-Clone the repo from wherever ($HOME is a good place) then run the first time script which will print out the ssh key.
+Clone the repo from wherever ($HOME is a good place) then run the initialization script which will print out the ssh key. This script is idempotent so if something goes awry, feel free to fix and run again.
 
 ```zsh
 cd # or wherever
 git clone https://github.com/lucaswinningham/dot.git
-./dot/first.zsh
+./dot/init.zsh
 ```
 
 Copy the public key and add it to your GitHub's SSH and GPG keys settings.
