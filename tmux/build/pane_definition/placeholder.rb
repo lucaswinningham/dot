@@ -25,7 +25,7 @@ module Build
           Build::Util.tmux.send_keys('C-l', target_pane: @pane_id) # TODO: Make C-l configurable.
           sleep 1
 
-          # In example.yaml, it seems the first pane or two's history isn't completely cleared.
+          # TODO: In example.yaml, it seems the first pane or two's history isn't completely cleared.
           Build::Util.tmux.clear_history(target_pane: @pane_id)
         end
 

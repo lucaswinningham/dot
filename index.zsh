@@ -20,9 +20,6 @@ source "$root_dir/git_completion.zsh" "$root_dir/downloads"
 puts && puts "RVM:"
 source "$root_dir/rvm.zsh"
 
-puts && puts "Prompt:"
-source "$root_dir/prompt.zsh"
-
 puts && puts "Aliases:"
 source "$root_dir/aliases.zsh"
 
@@ -34,6 +31,12 @@ source "$root_dir/tmux.zsh"
 
 puts && puts "  --- LOCAL ---"
 source "$root_dir/local/index.zsh"
+
+# Must be last in order for puts calls to display correctly!
+# With `setopt promptsubst` in place before all others are initialized utilizing `puts`, it causes
+#   echoing "\$$variable_name" to actually printing out the value!
+puts && puts "Prompt:"
+source "$root_dir/prompt.zsh"
 
 puts && puts "Done."
 
