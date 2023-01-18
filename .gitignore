@@ -1,13 +1,19 @@
 tmux/logs/**/*
 
-local/*
+# Uncomment to safely configure `local`!
 
-!local/index.zsh
+local/**/*
 
-!local/bin/
-local/bin/*
-!local/bin/run
+# Uncomment below lines to commit changes to default `local` files!
 
-!local/tmux/
-local/tmux/*
-!local/tmux/work.yaml
+# local/*
+
+# !local/index.zsh
+
+# !local/bin/
+# local/bin/*
+# !local/bin/run
+
+# !local/tmux/
+# local/tmux/*
+# !local/tmux/work.yaml
