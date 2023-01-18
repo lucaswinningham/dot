@@ -159,3 +159,13 @@ source "$local_dir/postgresql.zsh"
 For more information on `add_to_variable`, `puts` or any other function available for use during session or initialization setup, see `.../dot/functions/**/*`.
 
 `DOT_VERBOSE` is a configurable environment variable in `.../dot/init/index.zsh` during initialization and `.../dot/index.zsh` during session startup. Setting this to anything other than `true` will quiet the stdout output during the respective phases.
+
+### Default changes
+
+To make changes to a default local file, run:
+
+```zsh
+git add --force local/[file]
+```
+
+Then commit and push as normal.
