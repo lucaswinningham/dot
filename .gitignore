@@ -1,10 +1,10 @@
 tmux/logs/**/*
 
-# Uncomment to safely configure `local`!
+# Uncomment to safely configure `local`, then run `git rm -r --cached local`: `git reset` to undo
 
-local/*
+local/**/*
 
-# Uncomment below lines to commit changes to default `local` files!
+# Uncomment below lines to commit changes to default `local` files
 
 # local/*
 
