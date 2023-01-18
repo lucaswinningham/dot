@@ -8,11 +8,10 @@ First, open a terminal window and change the preferred shell to zsh.
 chsh -s $(which zsh)
 ```
 
-Test that xcode is installed and install it if not.
+Ensure `xcode` is installed.
 
 ```zsh
-git
-xcode-select --install
+git --help || xcode-select --install
 ```
 
 Clone the repo from wherever ($HOME is a good place) then run the initialization script which will print out the ssh key. This script is idempotent so if something goes awry, feel free to fix and run again.
@@ -52,17 +51,6 @@ Run `run`, a command for personalizing local machine commands.
 ```zsh
 run work up
 ```
-
-<!-- Make `$HOME/.bashrc` point to `$HOME/.zshrc`.
-
-#### $HOME/.bashrc
-
-```bash
-#!/usr/bin/env bash
-
-source "$HOME/.zshrc"
-
-``` -->
 
 ## Clean up
 
