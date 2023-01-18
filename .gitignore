@@ -2,7 +2,7 @@ tmux/logs/**/*
 
 # Uncomment to safely configure `local`!
 
-local/**/*
+local/*
 
 # Uncomment below lines to commit changes to default `local` files!
 
