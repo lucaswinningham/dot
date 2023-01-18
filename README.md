@@ -14,7 +14,7 @@ Ensure `xcode` is installed.
 git --help || xcode-select --install
 ```
 
-Clone the repo from wherever ($HOME is a good place) then run the initialization script which will print out the ssh key. This script is idempotent so if something goes awry, feel free to fix and run again.
+Clone the repo from wherever (`$HOME` is a good place) then run the initialization script which will print out the ssh key. This script is idempotent so if something goes awry, feel free to fix and run again.
 
 ```zsh
 cd # or wherever
