@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+DOT_VERBOSE=${DOT_VERBOSE:-true}
+
 init_dir=${0:a:h}
 
 puts "Running initialization setup..."

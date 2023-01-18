@@ -3,6 +3,8 @@
 autoload -U colors && colors # black, red, green, yellow, blue, magenta, cyan, white
 
 puts() {
+  [[ ! $DOT_VERBOSE == 'true' ]] && return 0
+
   local kind="$1"
   local message="$2"
   local color

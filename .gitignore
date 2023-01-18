@@ -1,2 +1,13 @@
-local/**/*
 tmux/logs/**/*
+
+local/*
+
+!local/index.zsh
+
+!local/bin/
+local/bin/*
+!local/bin/run
+
+!local/tmux/
+local/tmux/*
+!local/tmux/work.yaml

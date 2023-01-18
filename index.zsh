@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+DOT_VERBOSE=${DOT_VERBOSE:-true}
+
 root_dir=${0:a:h}
 
 source "$root_dir/functions/set.zsh"
