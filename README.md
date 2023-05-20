@@ -22,7 +22,7 @@ git clone https://github.com/lucaswinningham/dot.git
 ./dot/init.zsh
 ```
 
-Copy the public key and add it to your GitHub's SSH and GPG keys settings.
+Copy the public key and add it to your [GitHub's SSH and GPG keys settings](https://github.com/settings/keys).
 
 [Install iTerm2](https://www.iterm2.com/downloads.html)
 
