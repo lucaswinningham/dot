@@ -18,13 +18,19 @@ Ensure `xcode` is installed.
 git --help || xcode-select --install
 ```
 
-### Repo
+### Repository
 
 Clone the repo from wherever (`$HOME` is a good place) then run the initialization script which will print out the ssh key. This script is idempotent so if something goes awry, feel free to fix and run again.
 
 ```zsh
 cd # or wherever
 git clone https://github.com/lucaswinningham/dot.git
+```
+
+### Initialization
+
+```zsh
+# cd .../dot
 ./dot/init.zsh
 ```
 
