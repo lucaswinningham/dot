@@ -2,17 +2,23 @@
 
 ## Set up
 
+### Shell
+
 First, open a terminal window and change the preferred shell to zsh.
 
 ```zsh
 chsh -s $(which zsh)
 ```
 
+### Xcode
+
 Ensure `xcode` is installed.
 
 ```zsh
 git --help || xcode-select --install
 ```
+
+### Repo
 
 Clone the repo from wherever (`$HOME` is a good place) then run the initialization script which will print out the ssh key. This script is idempotent so if something goes awry, feel free to fix and run again.
 
@@ -22,7 +28,11 @@ git clone https://github.com/lucaswinningham/dot.git
 ./dot/init.zsh
 ```
 
+### GitHub
+
 Copy the public key and add it to your [GitHub's SSH and GPG keys settings](https://github.com/settings/keys).
+
+### iTerm
 
 [Install iTerm2](https://www.iterm2.com/downloads.html)
 
@@ -34,11 +44,15 @@ Navigate to `$HOME/.dot/iTerm/profile.json` then > Open. The profile named "Dot"
 
 Open a new terminal session to start with the new profile.
 
+### Visual Studio Code
+
 [Install Visual Studio Code](https://code.visualstudio.com/download)
 
 Update Visual Studio Code's settings from backup by first opening the application then:
 
 Left Toolbar > Accounts > Turn on Settings Sync... > Sign in & Turn on > Sign in with GitHub
+
+### `run`
 
 Run `run`, a command for personalizing local machine commands. See `.../dot/local/bin/run` for customizing the command and `.../dot/local/tmux/work.yaml` for the tmux configuration file.
 
