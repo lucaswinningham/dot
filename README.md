@@ -26,9 +26,9 @@ Copy the public key and add it to your [GitHub's SSH and GPG keys settings](http
 
 [Install iTerm2](https://www.iterm2.com/downloads.html)
 
-Update iTerm2's settings from the backup by first opening the application then:
+Update iTerm2's settings from backup by first opening the application then:
 
-iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles...
+iTerm2 > Settings > Profiles > Other Actions > Import JSON Profiles...
 
 Navigate to `$HOME/.dot/iTerm/profile.json` then > Open. The profile named "Dot" should appear in the list of profiles. Select "Dot" then Other Actions > Set as Default.
 
@@ -36,17 +36,9 @@ Open a new terminal session to start with the new profile.
 
 [Install Visual Studio Code](https://code.visualstudio.com/download)
 
- - Install the extension Settings Sync by Shan Khan
+Update Visual Studio Code's settings from backup by first opening the application then:
 
-   - Click LOGIN WITH GITHUB
-
-   - Click Authorize shanalikhan
-
-   - Select Visual Studio Code Settings Sync Gist
-
- - CMD + SHIFT + P
-
-   - download settings
+Left Toolbar > Accounts > Turn on Settings Sync... > Sign in & Turn on > Sign in with GitHub
 
 Run `run`, a command for personalizing local machine commands. See `.../dot/local/bin/run` for customizing the command and `.../dot/local/tmux/work.yaml` for the tmux configuration file.
 
