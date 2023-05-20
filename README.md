@@ -2,11 +2,15 @@
 
 ## Set up
 
+### Shell
+
 First, open a terminal window and change the preferred shell to zsh.
 
 ```zsh
 chsh -s $(which zsh)
 ```
+
+### Xcode
 
 Ensure `xcode` is installed.
 
@@ -14,39 +18,47 @@ Ensure `xcode` is installed.
 git --help || xcode-select --install
 ```
 
+### Repository
+
 Clone the repo from wherever (`$HOME` is a good place) then run the initialization script which will print out the ssh key. This script is idempotent so if something goes awry, feel free to fix and run again.
 
 ```zsh
 cd # or wherever
 git clone https://github.com/lucaswinningham/dot.git
+```
+
+### Initialization
+
+```zsh
+# cd .../dot
 ./dot/init.zsh
 ```
 
-Copy the public key and add it to your GitHub's SSH and GPG keys settings.
+### GitHub
+
+Copy the public key and add it to your [GitHub's SSH and GPG keys settings](https://github.com/settings/keys).
+
+### iTerm
 
 [Install iTerm2](https://www.iterm2.com/downloads.html)
 
-Update iTerm2's settings from the backup by first opening the application then:
+Update iTerm2's settings from backup by first opening the application then:
 
-iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles...
+iTerm2 > Settings > Profiles > Other Actions > Import JSON Profiles...
 
 Navigate to `$HOME/.dot/iTerm/profile.json` then > Open. The profile named "Dot" should appear in the list of profiles. Select "Dot" then Other Actions > Set as Default.
 
 Open a new terminal session to start with the new profile.
 
+### Visual Studio Code
+
 [Install Visual Studio Code](https://code.visualstudio.com/download)
 
- - Install the extension Settings Sync by Shan Khan
+Update Visual Studio Code's settings from backup by first opening the application then:
 
-   - Click LOGIN WITH GITHUB
+Left Toolbar > Accounts > Turn on Settings Sync... > Sign in & Turn on > Sign in with GitHub
 
-   - Click Authorize shanalikhan
-
-   - Select Visual Studio Code Settings Sync Gist
-
- - CMD + SHIFT + P
-
-   - download settings
+### `run`
 
 Run `run`, a command for personalizing local machine commands. See `.../dot/local/bin/run` for customizing the command and `.../dot/local/tmux/work.yaml` for the tmux configuration file.
 
