@@ -6,8 +6,12 @@ if which brew > /dev/null; then
   brew update
 else
   puts warn "Homebrew not installed, installing..."
+
   puts cmd "  /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  puts cmd "  eval \"$(/opt/homebrew/bin/brew shellenv)\""
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 homebrew_dir=${0:a:h}
