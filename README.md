@@ -181,3 +181,86 @@ git add --force local/[file]
 ```
 
 Then commit and push as normal.
+
+## Additional setup
+
+### Node / NVM / NPM / Yarn
+
+```zsh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+
+Which outputs:
+
+```zsh
+...
+=> Close and reopen your terminal to start using nvm or run the following to use it now:
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+
+Which means that it automatically added those lines to the end of the `~/.zshrc` file which is symlinked to our `zshrc` file here. Remove those lines from `.../dot/zshrc` to keep it clean then add a file `.../dot/local/nvm.zsh` with those lines instead:
+
+```zsh
+#!/bin/zsh
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+puts succ "NVM initialized."
+
+```
+
+Then add to `.../dot/local/index.zsh` with:
+
+```zsh
+...
+
+puts && puts "NVM"
+source "$local_dir/nvm.zsh"
+
+```
+
+Reload the environment.
+
+```zsh
+source "$HOME/.zshrc"
+```
+
+And we should see successful `NVM` diagnostics:
+
+```zsh
+command -v nvm
+nvm -v
+```
+
+Next, install the latest LTS `Node` via `NVM`:
+
+```zsh
+nvm install --lts
+```
+
+And we should see successful `Node` and `NPM` diagnostics:
+
+```zsh
+command -v node
+node -v
+command -v npm
+npm -v
+```
+
+Next, activate the latest stable `Yarn` via `corepack`:
+
+```zshrc
+corepack enable
+corepack prepare yarn@stable --activate
+```
+
+And we should see successful `Yarn` diagnostics:
+
+```zsh
+command -v yarn
+yarn -v
+```
