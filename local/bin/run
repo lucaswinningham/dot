@@ -10,17 +10,60 @@ rescue LoadError
 end
 
 module Run
+  CODE_DIR = File.expand_path("#{Dir.home}/code").freeze
+
+  class CommandHooks < Module
+    attr_reader :dir
+  
+    def initialize(dir = nil)
+      @dir = dir
+    end
+  
+    def included(base)
+      local_dir = dir
+      base.define_singleton_method(:dir) { local_dir }
+  
+      base.include InstanceMethods
+      base.extend ClassMethods
+    end
+  
+    module InstanceMethods
+      def with_dir(dir = self.class.dir, &block)
+        Dir.chdir("#{[Run::CODE_DIR, dir].compact.join('/')}", &block)
+      end
+  
+      def cmd(command, dir = self.class.dir)
+        with_dir dir do
+          system(command, out: $stdout, err: :out)
+        end
+      end
+    end
+  
+    module ClassMethods
+      def cmd(command)
+        define_method :call do |*, **|
+          cmd command
+        end
+      end
+    end
+  end
+
   module CLI
     module Commands
       extend Dry::CLI::Registry
 
       module Work
-        class Up < Dry::CLI::Command
-          desc 'Reinitialize your work environment'
+        DIR = 'work'
+        Hooks = Run::CommandHooks.new(DIR)
 
-          def call(*, **)
-            system('mytmux build $HOME/.dot/local/tmux/work.yaml', out: $stdout, err: :out)
-          end
+        class Up < Dry::CLI::Command
+          include Hooks # or include Run::CommandHooks.new
+          desc 'Reinitialize your work environment'
+          cmd 'mytmux build $HOME/.dot/local/tmux/work.yaml'
+
+          # def call(*, **)
+          #   system('mytmux build $HOME/.dot/local/tmux/work.yaml', out: $stdout, err: :out)
+          # end
         end
       end
 
