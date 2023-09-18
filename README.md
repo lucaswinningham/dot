@@ -1,6 +1,6 @@
 # Dot
 
-![Demo GIF](img/demo.mov)
+https://github.com/lucaswinningham/dot/assets/24572180/63e7990e-e00a-4500-bbe4-9b90074dad92
 
 ## Set up
 
