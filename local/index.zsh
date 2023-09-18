@@ -2,5 +2,5 @@
 
 local_dir=${0:a:h}
 
-# puts && puts "SomePackage:"
-# source "$local_dir/some_package.zsh"
+puts && puts "bin:"
+add_to_variable "PATH" "$HOME/.dot/local/bin" ":"

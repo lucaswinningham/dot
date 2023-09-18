@@ -8,6 +8,9 @@ source "$root_dir/functions/set.zsh"
 
 puts "Initializing..."
 
+puts && puts "Homebrew:"
+source "$root_dir/homebrew.zsh"
+
 puts && puts "openssl:"
 source "$root_dir/openssl.zsh"
 
