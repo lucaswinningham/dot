@@ -1,5 +1,7 @@
 # Dot
 
+![Demo GIF](img/demo.gif)
+
 ## Set up
 
 First, open a terminal window and change the preferred shell to zsh.
