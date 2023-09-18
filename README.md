@@ -1,6 +1,6 @@
 # Dot
 
-![Demo GIF](img/demo.gif)
+![Demo GIF](img/demo.mov)
 
 ## Set up
 
