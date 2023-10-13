@@ -58,7 +58,7 @@ Open a new terminal session to start with the new profile.
 
 Update Visual Studio Code's settings from backup by first opening the application then:
 
-Left Toolbar > Accounts > Turn on Settings Sync... > Sign in & Turn on > Sign in with GitHub
+Left Toolbar > Accounts > Backup and Sync Settings > Sign in > Sign in with GitHub
 
 ### `run`
 
