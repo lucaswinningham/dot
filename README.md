@@ -33,7 +33,7 @@ git clone https://github.com/lucaswinningham/dot.git
 
 ```zsh
 # cd .../dot
-./dot/init.zsh
+./init.zsh
 ```
 
 ### GitHub
