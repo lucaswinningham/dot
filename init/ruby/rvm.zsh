@@ -16,6 +16,6 @@ else
   puts cmd "  source \"$HOME/.rvm/scripts/rvm\""
   source "$HOME/.rvm/scripts/rvm"
 
-  puts cmd "rvm install ruby --latest"
+  puts cmd "  rvm install ruby --latest"
   rvm install ruby --latest
 fi
