@@ -16,6 +16,14 @@ else
   puts cmd "  source \"$HOME/.rvm/scripts/rvm\""
   source "$HOME/.rvm/scripts/rvm"
 
-  puts cmd "rvm install ruby --latest"
-  rvm install ruby --latest
+  # puts cmd "  rvm install ruby --latest"
+  # rvm install ruby --latest
+
+  # Above doesn't work anymore, see: https://github.com/rvm/rvm/issues/5261#issuecomment-1704547846
+
+  puts cmd "  brew install openssl@1.1"
+  brew install openssl@1.1
+
+  puts cmd "  PKG_CONFIG_PATH=\"$(brew --prefix openssl@1.1)/lib/pkgconfig\" rvm install ruby --latest --with-open-ssl-dir=$(brew --prefix openssl@1.1)"
+  PKG_CONFIG_PATH="$(brew --prefix openssl@1.1)/lib/pkgconfig" rvm install ruby --latest --with-open-ssl-dir=$(brew --prefix openssl@1.1)
 fi
