@@ -26,7 +26,7 @@ Clone the repo from wherever (`$HOME` is a good place) then run the initializati
 
 ```zsh
 cd # or wherever
-git clone https://github.com/lucaswinningham/dot.git
+git clone git@github.com:lucaswinningham/dot.git
 ```
 
 ### Initialization
